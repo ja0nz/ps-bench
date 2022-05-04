@@ -4,11 +4,17 @@ Just a *trial and error* workbench for various PS projects.
 * Contents :toc:
 - [[#monorepo-usage][Monorepo Usage]]
   - [[#new-project][new project]]
+- [[#proj-tasks][PROJ Tasks]]
+  - [[#fizzbuzz-with-monoids][FizzBuzz with Monoids]]
 
 * Monorepo Usage
 This repo makes use of [[https://github.com/purescript/spago#monorepo][Spago Monorepo]]
 
 ** new project
 #+begin_src bash
-yarn t:template project/<name>
+yarn t:template projects/<name>
 #+end_src
+
+* PROJ Tasks
+** DONE FizzBuzz with Monoids
+https://joneshf.github.io/programming/2014/09/24/FizzBuzz-With-Semigroups-And-Apply.html
