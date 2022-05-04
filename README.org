@@ -1,5 +1,5 @@
 #+TITLE: Readme
-Just a *trail and error* workbench for various PS projects.
+Just a *trial and error* workbench for various PS projects.
 
 * Contents :toc:
 - [[#monorepo-usage][Monorepo Usage]]
@@ -10,8 +10,5 @@ This repo makes use of [[https://github.com/purescript/spago#monorepo][Spago Mon
 
 ** new project
 #+begin_src bash
-mkdir project
-cd project
-spago init
-
+yarn t:template project/<name>
 #+end_src
