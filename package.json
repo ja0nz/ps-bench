@@ -1,0 +1,12 @@
+{
+  "name": "ps-bench",
+  "private": true,
+  "workspaces": [
+    "projects/*",
+    "tools"
+  ],
+  "devDependencies": {
+    "tools": "workspace:^"
+  },
+  "packageManager": "yarn@3.2.0"
+}
