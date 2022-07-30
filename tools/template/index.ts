@@ -51,6 +51,9 @@ const skel = join(dirname(dest), STENCIL);
 })();
 
 // Lastly... register new package
-const workspace = basename(dirname(dest));
-const pDhall  = join(process.env.PROJECT_CWD ?? process.cwd(), "packages.dhall");
-appendFileSync(pDhall, `  with ${target.split(".").pop()} = ./${workspace}/${target}/spago.dhall as Location\n`);
+// const workspace = basename(dirname(dest));
+// const pDhall  = join(process.env.PROJECT_CWD ?? process.cwd(), "packages.dhall");
+// appendFileSync(pDhall, `  with ${target.split(".").pop()} = ./${workspace}/${target}/spago.dhall as Location\n`);
+
+const pDhall  = join(process.env.PROJECT_CWD ?? process.cwd(), "projects", "packages.dhall");
+appendFileSync(pDhall, `  with ${target.split(".").pop()} = ./${target}/spago.dhall as Location\n`);

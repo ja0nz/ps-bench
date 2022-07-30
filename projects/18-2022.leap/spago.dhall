@@ -32,6 +32,6 @@ to generate this file without the comments in this block.
   , "strings"
   , "transformers"
   ]
-, packages = ../../packages.dhall
+, packages = ../packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
 }
