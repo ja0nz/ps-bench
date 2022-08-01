@@ -105,3 +105,4 @@ let upstream =
 in  upstream
   with leap = ./18-2022.leap/spago.dhall as Location
   with typedrivenDev = ./18-2022.typedrivenDev/spago.dhall as Location
+  with replaceReact = ./31-2022.replaceReact/spago.dhall as Location
