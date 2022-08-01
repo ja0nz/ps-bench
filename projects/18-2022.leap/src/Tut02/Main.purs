@@ -1,6 +1,11 @@
--- https://github.com/adkelley/javascript-to-purescript/tree/master/tut02
--- https://github.com/adkelley/javascript-to-purescript/blob/master/tut02/src/Main.purs
--- Learning: FFI Composition Refactoring
+{-
+https://github.com/adkelley/javascript-to-purescript/tree/master/tut02
+https://github.com/adkelley/javascript-to-purescript/blob/master/tut02/src/Main.purs
+Learning:
+ - FFI Composition Refactoring
+ - Bind/fold
+
+-}
 module Leap.Tut02.Main where
 
 import Prelude
@@ -48,13 +53,10 @@ applyDiscount' :: String -> String -> Number
 applyDiscount' price discount =
   extract
     $ (moneyToFloat price) -- 1. Box
-
         >>=
-          ( \cost -> -- bind "cost"
-
+          ( \cost -> -- bind/fold "cost"
               (percentToFloat discount) -- 2. Box
-
-                >>= (\savings -> pure $ cost - cost * savings) -- closure cost bound savings
+                >>= (\savings -> pure $ cost - cost * savings) -- bind/fold closure cost bound savings
           )
 
 main :: Effect Unit

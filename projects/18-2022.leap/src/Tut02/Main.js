@@ -1,3 +1,3 @@
 "use strict"
 
-exports.unsafeParseFloat = parseFloat
+export const unsafeParseFloat = parseFloat

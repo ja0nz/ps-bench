@@ -1,5 +1,8 @@
--- https://github.com/adkelley/javascript-to-purescript/blob/master/tut04P2/src/Main.purs
--- Learnings: chain readFile NodeFS
+{-
+https://github.com/adkelley/javascript-to-purescript/blob/master/tut04P2/src/Main.purs
+Learnings:
+ - chain readFile NodeFS
+-}
 module Leap.Tut04.Main where
 
 import Prelude

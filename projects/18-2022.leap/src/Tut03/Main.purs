@@ -1,7 +1,14 @@
--- https://github.com/adkelley/javascript-to-purescript/tree/master/tut03
--- https://github.com/adkelley/javascript-to-purescript/blob/master/tut03/src/Main.purs
--- Learning: Either CodeBranching ErrorChecks NullCheck List
 {-
+https://github.com/adkelley/javascript-to-purescript/tree/master/tut03
+https://github.com/adkelley/javascript-to-purescript/blob/master/tut03/src/Main.purs
+Learning:
+ - Fn3 FFI -> autocurry
+ - Either CodeBranching
+ - Pattern matching
+ - ErrorChecks
+ - NullCheck List
+
+
 It is the Left constructor that makes the Either functor more flexible than
 Box. With Left we can perform pure functional error handling, instead of
 creating a side-effect (e.g., throwing an exception). If a function fails
@@ -40,7 +47,7 @@ type Error = Unit
 data Color = Color ColorName HexValue
 
 instance showColor :: Show Color where
-  show (Color name hex) = "Color(" <> show name <> ", " <> show hex <> ")"
+  show (Color name hex') = "Color(" <> show name <> ", " <> show hex' <> ")"
 
 type Colors = List Color
 
@@ -62,7 +69,7 @@ fromList xs =
   else
     Right $ unsafePartial fromJust $ head xs -- Remember: *unsafePartial fromJust*
 
--- using pattern matching instead
+-- Better: using pattern matching instead
 fromList' :: forall a. List a -> Either Unit a
 fromList' Nil = Left unit
 fromList' xs = Right $ unsafePartial fromJust $ head xs
@@ -77,6 +84,7 @@ findColor colorName = fromList' $ dropWhile (\(Color n _) -> n /= colorName) mas
 findColor' :: ColorName -> Either Error Color
 findColor' colorName = fromList $ filter (\(Color n _) -> n == colorName) masterColors
 
+-- HEX
 hex :: Color -> HexValue
 hex (Color _ h) = h
 

@@ -13,11 +13,11 @@ import Effect.Aff.Compat (EffectFnAff(..), fromEffectFnAff)
 import Foreign (MultipleErrors)
 import Simple.JSON (class ReadForeign, parseJSON, readJSON)
 
-type Path
-  = String
+type Path = String
 
 -- we want Todos after all ... getting there
 foreign import _get :: Path -> EffectFnAff String
+
 -- lift to Aff: fromEffectFnAff
 
 -- PSC-IDE: C-c C-a
@@ -38,13 +38,13 @@ How to proceed - metal model:
 - toJson <$> fromEffectFnAff -> is type: String -> Either Error a0
 -}
 
-
 ajaxGet :: forall a. ReadForeign a => Path -> Aff (Either Error a)
 ajaxGet path = (lmap adaptError <<< parseJSON) <$> fromEffectFnAff (_get path)
   where
-    parseJSON :: String -> Either MultipleErrors a
-    parseJSON = readJSON
-    adaptError :: MultipleErrors -> Error
-    adaptError = error <<< show
+  parseJSON :: String -> Either MultipleErrors a
+  parseJSON = readJSON
+
+  adaptError :: MultipleErrors -> Error
+  adaptError = error <<< show
 
 -- lift ReadForeign to a: readJSON
