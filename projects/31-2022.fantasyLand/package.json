@@ -1,0 +1,27 @@
+{
+  "name": "31-2022.fantasyLand",
+  "version": "0.0.1",
+  "private": true,
+  "description": "TODO",
+  "keywords": [],
+  "homepage": "https://github.com/ja0nz/ps-bench/tree/main/projects/31-2022.fantasyLand#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ja0nz/ps-bench.git",
+    "directory": "projects/31-2022.fantasyLand"
+  },
+  "license": "Apache-2.0",
+  "author": "Ja0nz <mail@ja.nz>",
+  "type": "module",
+  "scripts": {
+    "ps:tidy": "s=src/**/*.purs; purs-tidy check $s || purs-tidy format-in-place $s",
+    "s:build": "spago build --purs-args '--codegen corefn,js'",
+    "s:start": "spago build -w",
+    "z:build": "zephyr -f Main",
+    "start": "run-p s:start --aggregate-output",
+    "build": "run-s s:build z:build"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

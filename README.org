@@ -1,5 +1,6 @@
 #+TITLE: PureScript Workbench
 A happy place to play along with purescript and its ecosystem.
+
 This repo architected as monorepo - both for [[https://github.com/purescript/spago#monorepo][Spago]] and [[https://yarnpkg.com/features/workspaces][Yarn workspaces]].
 
 * Contents :toc:

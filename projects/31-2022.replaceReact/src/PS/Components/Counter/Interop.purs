@@ -31,7 +31,8 @@ jsPropsToProps :: JSProps -> Props
 jsPropsToProps props =
   { label: fromMaybe "Click away!" $ toMaybe props.label
   , onClick: fromMaybe mempty $ map runEffectFn1 $ toMaybe props.onClick
-  , counterType: fromMaybe Incrementer $ counterTypeFromString =<< toMaybe props.counterType}
+  , counterType: fromMaybe Incrementer $ counterTypeFromString =<< toMaybe props.counterType
+  }
 
 {-
 For the time being we’ll use unsafePerformEffect to run the effect that

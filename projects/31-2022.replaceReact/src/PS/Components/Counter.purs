@@ -45,9 +45,9 @@ mkCounter = component "Counter" \props -> React.do
     [ p_ [ text $ i "You clicked " counter " times" ]
     , button
         { onClick: capture_ do
-             let next = step counter
-             setCount next
-             props.onClick next
+            let next = step counter
+            setCount next
+            props.onClick next
         , children: [ text props.label ]
         }
     ]
