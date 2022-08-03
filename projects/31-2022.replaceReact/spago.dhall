@@ -15,6 +15,8 @@ to generate this file without the comments in this block.
   [ "console"
   , "effect"
   , "interpolate"
+  , "maybe"
+  , "nullable"
   , "prelude"
   , "react-basic-dom"
   , "react-basic-hooks"
