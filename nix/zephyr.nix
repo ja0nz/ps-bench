@@ -1,32 +1,17 @@
-{ pkgs ? import <nixpkgs> { } }:
-
-pkgs.stdenv.mkDerivation rec {
+{ sources ? import ./sources.nix }:
+let pkgs = import sources.nixpkgs { };
+in pkgs.stdenv.mkDerivation rec {
   pname = "zephyr";
+  version = "custom";
 
-  version = "0.5.2";
-
-  src =
-    if pkgs.stdenv.isDarwin then
-      pkgs.fetchurl
-        {
-          url = "https://github.com/MaybeJustJames/zephyr/releases/download/v${version}/macOS.tar.gz";
-          sha256 = "06y82s2r5w8gryr6r2a4cwqwk01lrqgcv1x6qzxijh0ssfv42z1x";
-        }
-    else
-      pkgs.fetchurl {
-        url = "https://github.com/MaybeJustJames/zephyr/releases/download/v${version}/Linux.tar.gz";
-        sha256 = "15gfifqxxzr3slgk5a3bwjq5zfxm0gabknzqhl72x69rl959lwwh";
-      };
+  # Added as niv dependency
+  # Attention: on macOS -> different tarball url!
+  src = sources.zephyr;
 
   nativeBuildInputs = [ ]
     ++ pkgs.lib.optional pkgs.stdenv.isDarwin pkgs.fixDarwinDylibNames;
 
-  buildInputs = [
-    pkgs.stdenv.cc.cc.lib
-    pkgs.gmp
-    pkgs.zlib
-    pkgs.ncurses6
-  ];
+  buildInputs = [ pkgs.stdenv.cc.cc.lib pkgs.gmp pkgs.zlib pkgs.ncurses6 ];
 
   libPath = pkgs.lib.makeLibraryPath buildInputs;
 
@@ -34,7 +19,7 @@ pkgs.stdenv.mkDerivation rec {
 
   unpackPhase = ''
     mkdir -p $out/bin
-    tar xf $src --strip 1 -C $out
+    cp -r $src/* $out
 
     ZEPHYR=$out/bin/zephyr
     install -D -m555 -T $out/zephyr $ZEPHYR

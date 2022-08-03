@@ -22,5 +22,12 @@
         "type": "tarball",
         "url": "https://github.com/NixOS/nixpkgs/archive/67f49b2a3854e8b5e3f9df4422225daa0985f451.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "zephyr": {
+        "sha256": "1waxm9bmxwa1mxhrbi2digpyscczpxgvs1v4nn9hm2wmzglryrkn",
+        "type": "tarball",
+        "url": "https://github.com/MaybeJustJames/zephyr/releases/download/v0.5.2/Linux.tar.gz",
+        "url_template": "https://github.com/MaybeJustJames/zephyr/releases/download/v<version>/Linux.tar.gz",
+        "version": "0.5.2"
     }
 }
