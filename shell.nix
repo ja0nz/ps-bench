@@ -5,27 +5,27 @@ let
   pkgs' = import sources.unstable { };
 
   stable = with pkgs; [
-    # PureScript tooling
+    # Mandatory
     spago # PureScript build tool
-    # Additional
-    # nodePackages.purs-tidy # A syntax tidy-upper (formatter) for PureScript.
+    yarn # Fast, reliable, and secure dependency management for javascript
+    # Optional
     nodePackages.purescript-psa # Error/Warning reporting frontend for psc
     nodePackages.pscid # A lightweight editor experience for PureScript development
-    # Nix tooling
+    ## Nix tooling
     nixfmt # An opinionated formatter for Nix
-    # JS tooling
-    yarn # Fast, reliable, and secure dependency management for javascript
+    ## JS tooling
     nodePackages.prettier # Prettier is an opinionated code formatter
-    # LSP
+    ## LSP
     nodePackages.purescript-language-server
     nodePackages.typescript-language-server
     nodePackages.vscode-html-languageserver-bin
   ];
-  # Deprecation: with *release-22.11* the unstable section can be merged
-  # into the stable section.
+  # TODO with *release-22.11* this section can be merged into the stable section.
   unstable = with pkgs'; [
+    # Mandatory
     purescript # A strongly-typed functional programming language that compiles to JavaScript
+    # Optional
     (callPackage zephyr { }) # Zephyr, tree-shaking for the PureScript language
-    nodePackages.purs-tidy
+    nodePackages.purs-tidy # A syntax tidy-upper (formatter) for PureScript.
   ];
 in pkgs.mkShell { buildInputs = stable ++ unstable; }

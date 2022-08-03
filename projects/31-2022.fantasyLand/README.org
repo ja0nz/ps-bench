@@ -1,0 +1,11 @@
+#+TITLE: 31-2022.fantasyLand
+#+OPTIONS: ^:nil
+
+* TLDR
+Play along with the [[https://github.com/fantasyland/fantasy-land][Fantasy Land Specifications]]. Write up some ideas and usages. A good reference for designing expressive types.
+
+* Authors
+- Ja0nz
+
+* License
+2022 Ja0nz // Apache Software License 2.0

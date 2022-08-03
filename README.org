@@ -1,20 +1,56 @@
-#+TITLE: Readme
-Just a *trial and error* workbench for various PS projects.
+#+TITLE: PureScript Workbench
+A happy place to play along with purescript and its ecosystem.
+This repo architected as monorepo - both for [[https://github.com/purescript/spago#monorepo][Spago]] and [[https://yarnpkg.com/features/workspaces][Yarn workspaces]].
 
 * Contents :toc:
-- [[#monorepo-usage][Monorepo Usage]]
-  - [[#new-project][new project]]
+- [[#tooling][Tooling]]
+  - [[#ttemplate---scaffold-project-skeleton][t:template - scaffold project skeleton]]
+  - [[#tnode---evaluate-typescript-code][t:node - evaluate typescript code]]
+  - [[#pscid---a-minimal-shell-ide-for-ps][pscid - a minimal shell IDE for PS]]
+  - [[#zephyr---dead-code-elimination][zephyr - dead code elimination]]
+  - [[#purs-tidy---purescript-formatter][purs-tidy - PureScript formatter]]
 - [[#proj-tasks][PROJ Tasks]]
   - [[#fizzbuzz-with-monoids][FizzBuzz with Monoids]]
+  - [[#working-on-fantasyland-documentation][Working on fantasyLand documentation]]
+  - [[#realworld-application][RealWorld Application]]
 
-* Monorepo Usage
-This repo makes use of [[https://github.com/purescript/spago#monorepo][Spago Monorepo]]
+* Tooling
+All the tooling resolves around the mighty [[https://github.com/NixOS/nix][nix]] package manager cojointly used with [[https://direnv.net/][direnv]], [[https://github.com/target/lorri][lorri]] and [[https://github.com/nmattia/niv][niv]]. IMHO the most painless project setup stack.
+If you just want to get up and running quickly have a look at the [[file:shell.nix][./shell.nix]] file for needed dependencies.
 
-** new project
+** t:template - scaffold project skeleton
 #+begin_src bash
-yarn t:template projects/<name>
+yarn t:template projects/WEEK-YEAR.NAME
+#+end_src
+
+** t:node - evaluate typescript code
+this workspace comes with a TypeScript CLI
+#+begin_src bash
+yarn t:node someFile.ts
+#+end_src
+
+** pscid - a minimal shell IDE for PS
+#+begin_src bash
+cd intoProject
+pscid
+#+end_src
+
+** zephyr - dead code elimination
+for pre-bundling-production-ready optimization
+#+begin_src bash
+spago build --purs-args '--codegen corefn,js'
+zephyr -f YourMainEntryPoint
+#+end_src
+
+** purs-tidy - PureScript formatter
+Format in place
+#+begin_src bash
+s=src/*; purs-tidy check $s || purs-tidy format-in-place $s
 #+end_src
 
 * PROJ Tasks
 ** DONE FizzBuzz with Monoids
 https://joneshf.github.io/programming/2014/09/24/FizzBuzz-With-Semigroups-And-Apply.html
+** TODO Working on fantasyLand documentation
+Repo: [[file:projects/31-2022.fantasyLand/][FantasyLand]]
+** TODO RealWorld Application
